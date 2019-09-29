@@ -37,11 +37,11 @@ async def on_ready():
 @bot.command()
 async def peixinho(ctx):
 	'''glub! '''
-	await ctx.send('_glub glub_')
+	await ctx.send('_Кря Кря_')
 
 @bot.command()
 async def notifyme(ctx):
-	'''Adiciona seu nome na lista de avisos'''
+	'''Добавьте свое имя в список уведомлений'''
 	user = ctx.message.author
 	role = discord.utils.get(ctx.guild.roles, name='Boss Timer')
 	await user.add_roles(role)
