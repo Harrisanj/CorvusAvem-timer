@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from os import getenv
 
-
+await client.change_presence(activity=discord.Game(name='my game'))
 async def print_boss_message(boss_name,role,channel,delta):
 	if len(boss_name) == 1:
 		await channel.send('{role.mention} - {boss[0].mention} vai nascer em {delta}min'.format(role=role,boss=boss_name,delta=delta))
