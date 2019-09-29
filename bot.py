@@ -45,7 +45,7 @@ async def notifyme(ctx):
 	user = ctx.message.author
 	role = discord.utils.get(ctx.guild.roles, name='Boss Timer')
 	await user.add_roles(role)
-	await ctx.send('Você será notificado na hora de um boss :)')
+	await ctx.send('Вы будете уведомлены о появлении босса :)')
 
 @bot.command()
 async def removeme(ctx):
