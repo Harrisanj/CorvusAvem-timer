@@ -134,4 +134,4 @@ async def background_task(channel,guild,role):
 
 		await asyncio.sleep(60) # task runs every 60 seconds
 
-bot.run(token)
+bot.run(str(token))
