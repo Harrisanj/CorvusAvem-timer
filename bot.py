@@ -49,37 +49,37 @@ async def notifyme(ctx):
 
 @bot.command()
 async def removeme(ctx):
-	'''Remove seu nome da lista de avisos'''
+	'''Удалить свое имя из списка оповещений'''
 	user = ctx.message.author
 	role = discord.utils.get(ctx.guild.roles, name='Boss Timer')
 	await user.remove_roles(role)
-	await ctx.send('Você **não será mais** notificado na hora de um boss :(')
+	await ctx.send('Вы больше не будете уведомлены во время босса :(')
 
 @bot.command()
 async def setchannel(ctx):
-	'''Define qual o canal que o bot irá enviar as mensagens'''
+	'''Определяет, на какой канал бот будет отправлять сообщения'''
 	channel = ctx.message.channel
 	guild = ctx.message.guild
 	role = discord.utils.get(ctx.guild.roles, name='Boss Timer')
 	bot.bg_task = bot.loop.create_task(background_task(channel,guild,role))
-	await ctx.send('Vou realizar minhas notificações no canal {0.mention}'.format(channel))
+	await ctx.send('Я сделаю мои уведомления канала {0.mention}'.format(channel))
 
 @bot.command()
 async def stoppls(ctx):
-	'''Para de enviar mensagens'''
+	'''Прекратить отправку сообщений'''
 	if bot.bg_task:
 		bot.bg_task.cancel()
 		try:
 			await bot.bg_task
 		except asyncio.CancelledError:
-			print('Task was sucessfully canceled')
+			print('Задача была успешно отменена')
 		finally:
 			pass
-	await ctx.send('Ta bom, eu paro...')
+	await ctx.send('Хорошо я остановлюсь...')
 
 @bot.command()
 async def nextboss(ctx):
-	'''Fala qual o próximo boss'''
+	'''Скажи мне, что следующий босс'''
 	channel = ctx.message.channel
 	guild = ctx.message.guild
 
@@ -92,8 +92,8 @@ async def nextboss(ctx):
 		if current_hour < hour:
 			next_boss_spawn = boss_schedule[hour][current_day]
 			break
-		# if there is no boss to spawn on the current day
-		# then it should be the first boss of the next day
+		# если в текущий день нет босса
+		# тогда это должен быть первый босс на следующий день
 		next_boss_spawn = boss_schedule['02:00'][next_day]
 
 	boss_names = []
@@ -132,7 +132,7 @@ async def background_task(channel,guild,role):
 
 			await print_boss_message(boss_names,role,channel,int(delta.seconds/60))
 
-		await asyncio.sleep(60) # task runs every 60 seconds
+		await asyncio.sleep(60) # задание выполняется каждые 60 секунд
 
 bot.run(token)
 
