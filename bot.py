@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 from os import getenv
 
-await client.change_presence(activity=discord.Game(name='Делаю сраный таймер'));
-await client.change_presence(activity=activity);
+await client.change_presence(activity=discord.Game(name='Делаю сраный таймер'))
+await client.change_presence(activity=activity)
 
 async def print_boss_message(boss_name,role,channel,delta):
 	if len(boss_name) == 1:
